@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP STYLING  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <title>Sleep Cycle</title>
+    <script src="https://kit.fontawesome.com/47d85d73c6.js" crossorigin="anonymous"></script>
+    <!-- CSS STYLING  -->
+    <link rel="stylesheet" href="loginpage.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+</head>
+
+<body>
+
+
+
+    <div id="clock">
+    </div>
+    <script>
+        function clock() {
+        let date = new Date();
+        let hrs = date.getHours();
+        let mins = date.getMinutes();
+        let secs = date.getSeconds();
+        let period = "AM";
+      
+        if (hrs == 0) hrs = 12;
+        if (hrs > 12) {
+          hrs = hrs - 12;
+          period = "PM";
+        }
+      
+        hrs = hrs < 10 ? `0${hrs}` : hrs;
+        mins = mins < 10 ? `0${mins}` : mins;
+        secs = secs < 10 ? `0${secs}` : secs;
+      
+        let time = `${hrs}:${mins}:${secs} ${period}`;
+        setInterval(clock, 1000);
+        document.getElementById("clock").innerText = time;
+      }
+      
+      clock();
+    
+    </script>
+    <!---
+
+     
+    <section class="nav_section">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <div class="container-fluid">
+                <img src="/Images/Untitled design.gif" width="90px" height="50px">
+                <a class="navbar-brand" href="/index.html">Sleep Cycle</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link nav-txtx" aria-current="page" href="/index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-txtx" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-txtx" href="#">Dashboard</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a class="nav-link" href="/loginpage.html" id="button1">Login / SignUp </a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+
+    <div class="container d-flex justify-content-center">
+        <div class="container2" id="container2">
+            <form class="form" id="login">
+                <h1 class="form__title" style="color: black;"><b>Login</b><img src="/Images/cats yawning.gif" width="120px" height="120px"></h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Username or email">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <button class="form__button" type="submit">Continue</button>
+                <p class="form__text"><br>
+                    <a href="#" class="form__link">Forgot your password?</a>
+                </p>
+                <p class="form__text">
+                    <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
+                </p>
+            </form>
+            <form class="form form--hidden" id="createAccount">
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <h1 class="form__title" style="color: black;"><b>SignUp</b><img src="/Images/cats yawning.gif" width="100px" height="100px"></video></h1>
+                    <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Email Address">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Confirm password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <button class="form__button" type="submit">Continue</button>
+                <p class="form__text"><br>
+                    <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+                    
+                </p>
+            </form>
+        </div>
+    </div>
+
+    
+
+    <footer class="" id="footer">
+        <div class="container-fluid">
+          <i class="s-ico fab fa-facebook fa-2x fb"></i>
+          <i class="s-ico fab fa-twitter fa-2x tw"></i>
+          <i class="s-ico fab fa-instagram fa-2x inst"></i>
+          <i class="s-ico far fa-envelope fa-2x ema"></i>
+          <p class="CR">© Copyright 2021 SleepCycle</p>
+        </div>
+      </footer>-->
+
+
+      <div class="container" id="login-form">
+        <div class="well">
+            
+    <form>
+        <div class="form-group">
+          <label for="InputEmail" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword1" class="form-label" >Password</label>
+          <input type="password" class="form-control" id="inputPassword">
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            
+        <button id="sign-in-button" type="button" class="btn btn-primary ">Sign in</button>
+           
+        
+        <button id="create-new-user" type="button" class="btn btn-primary">Create new user</button>
+       
+        </div>
+    </form>
+        </div>
+    </div>
+    
+    <div class="container" id="logout-form"  >
+        <button id="logout" type="button" class="btn btn-primary">Logout</button>
+    </div>
+
+
+
+
+    <div class="container" id="add-time">
+        <div class="well">
+            
+      <form>
+        <div class="mb-3">
+          <label for="inputtime" class="form-label">Sleeping Time</label>
+          <input type="time" class="form-control" id="sleepingtime" aria-describedby="emailHelp">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exittime" class="form-label">Woke Up Time</label>
+          <input type="time" class="form-control" id="wakingtime">
+        </div>
+    <div class="mb-3">
+        <label for="sleepdate" class="form-label" >Date</label>
+        <input type="date" class="form-control" id="sleeptrackday" name="sleeptrackday"> 
+    </div>
+    <div class="mb-3">
+        <label for="timeyouhaveslept" class="form-label" >No of hours: </label>
+        <input type="text" name="sleepinghours" id="hours" >
+    </div>
+    
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button id="Add-entry" type="button" class="btn btn-primary">Add Entry</button>
+        <button id="show-entry" type="button" class="btn btn-primary">Show Entry</button>
+        
+    </div>
+
+
+      </form>
+    
+    </div>
+    </div>
+    <div id="show-entries">
+      <h3>Entries</h3>
+    </div>
+
+
+
+
+
+    <script>
+        var cUser = {};
+        
+    
+    $("#create-new-user").click(function(){
+    var email = $("#inputEmail").val();
+    var password = $("#inputPassword").val();
+    console.log("new user ="+ email +" "+ password);
+    createnewuser(email,password);
+
+    });
+    
+    $("#sign-in-button").click(function(){
+    var email = $("#inputEmail").val();
+    var password = $("#inputPassword").val();
+    console.log("existing user ="+ email +" "+ password);
+    signin(email,password);
+
+    });
+
+    $("#logout").click(function(){
+        firebase.auth().signOut();
+       console.log("logged out");
+       $("#login-form").show();
+    $("#add-time").hide();
+    });
+
+    $("#Add-entry").click(function(){
+       
+    var id = $("#hours").val() + Date.now();
+    var owner = cUser.uid;
+    var sleeptime = $("#sleepingtime").val();
+    var waketime = $("#wakingtime").val();
+    var date = $("#sleeptrackday").val();
+    var length = $("#hours").val();
+       
+
+     addentrytodb(id,owner,sleeptime,waketime,date,length);
+
+        
+    });
+
+    $("#show-entry").click(function(){
+           showdata()
+    })
+
+    function addentrytodb(id,owner,sleeptime,waketime,date,length){
+        var database = firebase.database();
+        firebase.database().ref("entries/" + id).set({
+            id: id,
+            owner: owner,
+            sleeptime: sleeptime,
+            waketime: waketime,
+            date: date,
+            length: length
+        });
+          console.log("added");
+        firebase.database().ref("users/" + cUser.uid +"/entries/" + id).set({
+          id: id,
+            owner: owner,
+            sleeptime: sleeptime,
+            waketime: waketime,
+            date: date,
+            length: length
+        });
+    }
+
+
+function writeUserData(userId,email) {
+
+        
+  firebase.database().ref('users/' + userId).set({
+    
+    email: email
+    
+  });
+ }
+
+ 
+
+function showdata()
+{
+  firebase.database().ref("users/" + cUser.uid +"/entries/").on('value',function(snapshot){
+    $("#show-entries").empty();
+
+    var entryHTMLitem = "" ;
+    snapshot.forEach(element => {
+      entryHTMLitem += "<li>sleeptime:<span>" + element.val().sleeptime + "</span></li>";
+      entryHTMLitem += "<li>waketime:<span>" + element.val().waketime + "</span></li>";
+      entryHTMLitem += "<li>date:<span>" + element.val().date + "</span></li>";
+      entryHTMLitem += "<li>hours:<span>" + element.val().length + "</span></li>";
+      
+    });
+    $("#show-entries").html(entryHTMLitem);
+  });
+
+
+
+};
+  
+
+ 
+
+
+
+
+   function createnewuser(email,password)
+   {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+   
+   
+    .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+    userinfo()
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
+   }    
+
+
+function signin(email,password)
+{
+
+   firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    userinfo()
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+}
+
+function userinfo(){
+    
+    const user = firebase.auth().currentUser;
+
+if (user) {
+  // User is signed in, see docs for a list of available properties
+  // https://firebase.google.com/docs/reference/js/firebase.User
+  // ...
+    var uid = user.uid;
+    var email = user.email;
+    cUser = user;
+    
+    writeUserData(uid,email);
+    console.log(cUser.email+"has logged in");
+
+    $("#login-form").hide();
+    $("#add-time").show();
+
+} else {
+  // No user is signed in.
+}
+   }
+    
+
+    
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="/loginpage.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+
+    
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDzGau7PsIQ3nHis6xdqBUkBznr5tuNjes",
+    authDomain: "sleeptrackingproject.firebaseapp.com",
+    projectId: "sleeptrackingproject",
+    storageBucket: "sleeptrackingproject.appspot.com",
+    messagingSenderId: "281842929379",
+    appId: "1:281842929379:web:a249dd7c3154f7f52a3fd6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <script> document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+ </script>   
+</body>
+
+</html>
